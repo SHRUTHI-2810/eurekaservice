@@ -1,0 +1,23 @@
+version: "3.8"
+
+# Supporting infrastructure for the demo:
+#   - RabbitMQ: message broker used as the transport for Spring Cloud Bus
+#     (broadcasts /actuator/busrefresh events to every subscribed instance)
+#   - Zipkin: collects and visualizes distributed traces reported by
+#     Micrometer Tracing from order-service and payment-service
+#
+# Start with: docker compose up -d
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: demo-rabbitmq
+    ports:
+      - "5672:5672"   # AMQP port used by Spring Cloud Bus
+      - "15672:15672" # Management UI: http://localhost:15672 (guest/guest)
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: demo-zipkin
+    ports:
+      - "9411:9411"   # Zipkin UI: http://localhost:9411

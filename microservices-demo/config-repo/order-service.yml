@@ -1,0 +1,18 @@
+# order-service specific config, served by Config Server as
+# GET http://localhost:8888/order-service/default
+#
+# app.greeting is exposed through a @RefreshScope bean in OrderController.
+# Change this value, commit it, then POST /actuator/busrefresh on ANY
+# bus-connected instance to push the new value to every running
+# order-service replica with zero restarts.
+app:
+  greeting: "Hello from Spring Cloud Config Server (v1) - Git-backed, zero-downtime refresh enabled"
+  discount-rate: 10
+
+server:
+  port: 8081
+
+payment-service:
+  # Logical Eureka service id resolved via the Feign client -
+  # no hardcoded host:port for payment-service.
+  name: payment-service

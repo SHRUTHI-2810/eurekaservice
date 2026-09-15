@@ -1,0 +1,28 @@
+# Shared config inherited by every service that pulls from this Config Server,
+# unless overridden in the service's own <service-name>.yml.
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh,busrefresh,bus-refresh,metrics
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

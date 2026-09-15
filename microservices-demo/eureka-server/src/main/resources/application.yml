@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # This IS the registry, so it doesn't need to register with itself
+    # or fetch a registry of its own.
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    # In a real multi-node registry, peers replicate to each other and
+    # this delay matters for how quickly a dead instance is evicted.
+    eviction-interval-timer-in-ms: 5000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,7 @@
+# payment-service specific config, served by Config Server as
+# GET http://localhost:8888/payment-service/default
+server:
+  port: 8082
+
+app:
+  simulate-failures: false
