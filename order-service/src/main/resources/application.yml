@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: order-service
+  config:
+    import: "optional:configserver:http://localhost:8888"
+
+feign:
+  circuitbreaker:
+    enabled: true # lets Resilience4j drive Feign's failover -> PaymentClientFallback
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      payment-service:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3

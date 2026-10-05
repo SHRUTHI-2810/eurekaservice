@@ -1,0 +1,8 @@
+com\example\orderservice\client\PaymentClientFallback.class
+com\example\orderservice\model\PaymentResponse.class
+com\example\orderservice\client\PaymentClient.class
+com\example\orderservice\OrderServiceApplication.class
+com\example\orderservice\model\PaymentRequest.class
+com\example\orderservice\controller\OrderController.class
+com\example\orderservice\service\OrderService.class
+com\example\orderservice\model\Order.class
